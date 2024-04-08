@@ -8,8 +8,6 @@ Various tools are build on top of [Lemur Project](http://www.lemurproject.org/) 
 
 ## Requirements
 
-TODO: add requirements for this project.
-
 while installing `pyserini`, it might fail to install `nmslib`.
 
 [here](https://github.com/nmslib/nmslib/issues/538#issuecomment-1735283499)'s a work around to install `nmslib` on python3.11 environment.
