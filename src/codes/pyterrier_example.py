@@ -10,19 +10,18 @@ def experiment():
     if not pt.started():
         pt.init()
 
-    # working_dir = os.path.join(os.path.dirname(os.getcwd()))
     working_dir = "/Users/zionn/Documents/github/Documents-Retrieval"
 
     WT2G_dir = os.path.join(working_dir, 'WT2G')
     files = pt.io.find_files(WT2G_dir)
 
     # read or build the index
-    if os.path.exists(os.path.join(working_dir, "wt2g_index", "data.properties")):
-        index_path = os.path.join(working_dir, "wt2g_index", "data.properties")
+    index_dir = "wt2g_index"
+    if os.path.exists(os.path.join(working_dir, index_dir, "data.properties")):
+        index_path = os.path.join(working_dir, index_dir, "data.properties")
         print(f"found index from {index_path}")
     else:
         print("building index")
-        index_dir = "wt2g_index"
         index_path = os.path.join(working_dir, index_dir)
         indexer = pt.TRECCollectionIndexer(
             index_path,
@@ -32,8 +31,8 @@ def experiment():
         )
         index_ref = indexer.index(files)
 
-    topics = pt.io.read_topics(os.path.join(working_dir, "topics.401-450.txt"))
-    qrels = pt.io.read_qrels(os.path.join(working_dir, "qrels.trec8.small_web"))
+    topics = pt.io.read_topics(os.path.join(working_dir, "data", "topics.401-450.txt"))
+    qrels = pt.io.read_qrels(os.path.join(working_dir, "data", "qrels.trec8.small_web"))
 
     # retrieval models
     tfidf = pt.BatchRetrieve(index_path, wmodel="TF_IDF")
@@ -88,7 +87,7 @@ def experiment():
         qrels,
         eval_metrics=[R@10, P@10, P@200, MAP, MAP@10, MAP@100, NDCG@100, Rprec]
     )
-    results.to_csv(os.path.join(working_dir, "pyterrier_results.csv"), float_format="%.4f")
+    results.to_csv(os.path.join(working_dir, "results", "pyterrier_results.csv"), float_format="%.3f")
     print(results)
 
 

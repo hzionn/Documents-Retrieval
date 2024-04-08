@@ -19,9 +19,11 @@ while installing `pyserini`, it might fail to install `nmslib`.
 (assuming you have these files)
 
 - Document Corpus
-  - `WT2g`: a collection contains Web documents, with being a 2GB corpus. Will use the corpus to test the retrieval algorithms, and run experiments.
+  - `WT2g/`: a collection contains Web documents, with being a 2GB corpus. Will use the corpus to test the retrieval algorithms, and run experiments.
 - Queries
   - `topics.401-450.txt`: a set of 50 TREC queries for the corpus, with the standard TREC format having topic title, description and narrative. Documents from the corpus have been judged with respect to their relevance to these queries by NIST assessors.
+  - `qrels.trec8.small_web`
+  - `qrels.401-450.txt`
 
 ## Evaluation
 
@@ -41,6 +43,8 @@ to reproduce the results from `pyterrier`, run the following command:
 ```bash
 make pyterrier
 ```
+
+the results will be saved to `pyterrier_results.csv`
 
 ## Works
 
