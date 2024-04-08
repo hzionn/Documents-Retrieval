@@ -10,6 +10,10 @@ Various tools are build on top of [Lemur Project](http://www.lemurproject.org/) 
 
 TODO: add requirements for this project.
 
+while installing `pyserini`, it might fail to install `nmslib`.
+
+[here](https://github.com/nmslib/nmslib/issues/538#issuecomment-1735283499)'s a work around to install `nmslib` on python3.11 environment.
+
 ## Directory and Files
 
 (assuming you have these files)
@@ -32,8 +36,13 @@ for using `trec_eval.pl`, you can run the following command:
 perl trec_eval.pl -[q] qrel_file results_file
 ```
 
+to reproduce the results from `pyterrier`, run the following command:
+
+```bash
+make pyterrier
+```
+
 ## Works
 
 We need to run the set of queries against the WT2g collection, return a ranked list of documents (the top 1000) in a particular format, and then evaluate the ranked lists.
 see [WSM Project 2.pdf](WSM%20Project%202.pdf) for project report.
-
