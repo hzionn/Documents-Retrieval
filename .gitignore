@@ -1,7 +1,11 @@
 .DS_Store
+.venv/
+__pycache__/
 
 WT2G/
 WT2G.tbz
+wt2g_index/
+indexex/
 
 proj2_sample_run*/
 
